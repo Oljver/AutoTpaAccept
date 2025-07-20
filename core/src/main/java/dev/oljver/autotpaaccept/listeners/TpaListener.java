@@ -31,19 +31,23 @@ public class TpaListener {
     Matcher matcher = tpaPattern.matcher(plainText);
 
     if (matcher.find()) {
+      String playerName = matcher.group(1);
       String command = matcher.group(0);
 
       if (this.addon.configuration().getAutoAccept().get()) {
         this.addon.labyAPI().minecraft().chatExecutor().chat(command, false);
-        this.addon.displayMessage(
-            Component.translatable("TPA automatically accepted.", NamedTextColor.GREEN));
+        this.addon.displayMessage(Component.text("TPA from ", NamedTextColor.GREEN)
+            .append(Component.text(playerName, NamedTextColor.YELLOW))
+            .append(Component.text(" automatically accepted.", NamedTextColor.GREEN)));
       } else {
-        Component message = Component.text("A TPA request was detected. ", NamedTextColor.AQUA)
+        Component message = Component.text("TPA request from ", NamedTextColor.AQUA)
+            .append(Component.text(playerName, NamedTextColor.YELLOW))
+            .append(Component.text(". ", NamedTextColor.AQUA))
             .append(Component.text("[ACCEPT]", Style.builder()
                 .color(NamedTextColor.GREEN)
                 .decorate(TextDecoration.BOLD)
                 .clickEvent(ClickEvent.runCommand(command))
-                .hoverEvent(HoverEvent.showText(Component.text("Click to accept the TPA")))
+                .hoverEvent(HoverEvent.showText(Component.text("Click to accept the TPA from " + playerName)))
                 .build()
             ));
         this.addon.displayMessage(message);
