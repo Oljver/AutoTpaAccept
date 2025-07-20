@@ -8,8 +8,12 @@ val versions = providers.gradleProperty("net.labymod.minecraft-versions").get().
 group = "org.example"
 version = providers.environmentVariable("VERSION").getOrElse("1.0.0")
 
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
 labyMod {
-    defaultPackageName = "org.example" //change this to your main package name (used by all modules)
+    defaultPackageName = "dev.oljver.autotpaaccept" //change this to your main package name (used by all modules)
 
     minecraft {
         registerVersion(versions.toTypedArray()) {
@@ -23,10 +27,10 @@ labyMod {
     }
 
     addonInfo {
-        namespace = "example"
-        displayName = "ExampleAddon"
-        author = "Example Author"
-        description = "Example Description"
+        namespace = "autotpaaccept"
+        displayName = "Auto TPA Accept"
+        author = "Oljver"
+        description = "This addon simplifies the management of incoming teleport requests (/tpa). It detects when a player sends you a TPA request and offers a convenient way to accept it."
         minecraftVersion = "*"
         version = rootProject.version.toString()
     }

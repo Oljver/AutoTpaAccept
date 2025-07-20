@@ -1,0 +1,12 @@
+{
+  "autotpaaccept": {
+    "settings": {
+      "enabled": {
+        "name": "Enabled"
+      },
+      "autoAccept": {
+        "name": "Auto-Accept TPA"
+      }
+    }
+  }
+}
