@@ -35,6 +35,10 @@ public class TpaListener {
       String playerName = matcher.group(1);
       String command = matcher.group(0);
 
+      if (!this.addon.configuration().getShowOriginalMessage().get()) {
+        event.setCancelled(true);
+      }
+
       if (this.addon.configuration().getPlaySound().enabled().get()) {
         float volume = this.addon.configuration().getPlaySound().getVolume().get();
         float pitch = this.addon.configuration().getPlaySound().getPitch().get();

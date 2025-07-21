@@ -7,6 +7,9 @@
       "autoAccept": {
         "name": "TPA automatisch annehmen"
       },
+      "showOriginalMessage": {
+        "name": "Originale Nachricht anzeigen"
+      },
       "playSound": {
         "name": "Sound abspielen",
         "volume": {
@@ -37,6 +40,9 @@
       "header": {
         "auto-accept-settings": {
           "name": "Auto-Annehmen Einstellungen"
+        },
+        "message-settings": {
+          "name": "Nachrichten Einstellungen"
         },
         "play-sound-settings": {
           "name": "Sound Einstellungen"

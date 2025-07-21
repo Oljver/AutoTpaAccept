@@ -16,6 +16,10 @@ public class AutoTpaAcceptConfig extends AddonConfig {
   @SwitchSetting
   private final ConfigProperty<Boolean> autoAccept = new ConfigProperty<>(false);
 
+  @SettingSection("message-settings")
+  @SwitchSetting
+  private final ConfigProperty<Boolean> showOriginalMessage = new ConfigProperty<>(true);
+
   @SettingSection("play-sound-settings")
   private final PlaySoundSubSetting playSound = new PlaySoundSubSetting();
 
@@ -26,6 +30,10 @@ public class AutoTpaAcceptConfig extends AddonConfig {
 
   public ConfigProperty<Boolean> getAutoAccept() {
     return autoAccept;
+  }
+
+  public ConfigProperty<Boolean> getShowOriginalMessage() {
+    return showOriginalMessage;
   }
 
   public PlaySoundSubSetting getPlaySound() {
