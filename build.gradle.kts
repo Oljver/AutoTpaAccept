@@ -30,7 +30,7 @@ labyMod {
         namespace = "autotpaaccept"
         displayName = "Auto TPA Accept"
         author = "Oljver"
-        description = "This addon simplifies the management of incoming teleport requests (/tpa). It detects when a player sends you a TPA request and offers a convenient way to accept it."
+        description = "This addon simplifies the management of incoming teleport requests. It detects when a player sends you a TPA request and offers a convenient way to accept it."
         minecraftVersion = "*"
         version = rootProject.version.toString()
     }
