@@ -9,6 +9,7 @@ import net.labymod.api.client.component.event.HoverEvent;
 import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.component.format.Style;
 import net.labymod.api.client.component.format.TextDecoration;
+import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.chat.ChatReceiveEvent;
 
@@ -33,6 +34,15 @@ public class TpaListener {
     if (matcher.find()) {
       String playerName = matcher.group(1);
       String command = matcher.group(0);
+
+      if (this.addon.configuration().getPlaySound().enabled().get()) {
+        float volume = this.addon.configuration().getPlaySound().getVolume().get();
+        float pitch = this.addon.configuration().getPlaySound().getPitch().get();
+        String soundName = this.addon.configuration().getPlaySound().getSound().get().getSoundName();
+
+        ResourceLocation soundResource = ResourceLocation.create("minecraft", soundName);
+        this.addon.labyAPI().minecraft().sounds().playSound(soundResource, volume, pitch);
+      }
 
       if (this.addon.configuration().getAutoAccept().get()) {
         this.addon.labyAPI().minecraft().chatExecutor().chat(command, false);

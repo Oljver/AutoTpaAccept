@@ -4,6 +4,7 @@ import net.labymod.api.addon.AddonConfig;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.SwitchSetting;
 import net.labymod.api.configuration.loader.annotation.ConfigName;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
+import net.labymod.api.configuration.settings.annotation.SettingSection;
 
 @ConfigName("settings")
 public class AutoTpaAcceptConfig extends AddonConfig {
@@ -11,8 +12,12 @@ public class AutoTpaAcceptConfig extends AddonConfig {
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
+  @SettingSection("auto-accept-settings")
   @SwitchSetting
   private final ConfigProperty<Boolean> autoAccept = new ConfigProperty<>(false);
+
+  @SettingSection("play-sound-settings")
+  private final PlaySoundSubSetting playSound = new PlaySoundSubSetting();
 
   @Override
   public ConfigProperty<Boolean> enabled() {
@@ -21,5 +26,9 @@ public class AutoTpaAcceptConfig extends AddonConfig {
 
   public ConfigProperty<Boolean> getAutoAccept() {
     return autoAccept;
+  }
+
+  public PlaySoundSubSetting getPlaySound() {
+    return playSound;
   }
 }

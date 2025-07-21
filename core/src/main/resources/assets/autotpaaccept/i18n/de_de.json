@@ -6,6 +6,41 @@
       },
       "autoAccept": {
         "name": "TPA automatisch annehmen"
+      },
+      "playSound": {
+        "name": "Sound abspielen",
+        "volume": {
+          "name": "Lautstärke"
+        },
+        "pitch": {
+          "name": "Tonhöhe"
+        },
+        "sound": {
+          "name": "Ton",
+          "entries": {
+            "entityExperienceOrbPickup": "Erfahrungskugel",
+            "entityPlayerLevelup": "Level Aufstieg",
+            "blockNoteBasedrum": "Note Basedrum",
+            "blockNoteBass": "Note Bass",
+            "blockNoteBell": "Note Glocke",
+            "blockNoteChime": "Note Windspiel",
+            "blockNoteFlute": "Note Flöte",
+            "blockNoteGuitar": "Note Gitarre",
+            "blockNoteHarp": "Note Harfe",
+            "blockNoteHat": "Note Hi-Hat",
+            "blockNotePling": "Note Pling",
+            "blockNoteSnare": "Note Snare",
+            "blockNoteXylophone": "Note Xylophon"
+          }
+        }
+      },
+      "header": {
+        "auto-accept-settings": {
+          "name": "Auto-Annehmen Einstellungen"
+        },
+        "play-sound-settings": {
+          "name": "Sound Einstellungen"
+        }
       }
     }
   }
