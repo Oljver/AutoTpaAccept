@@ -54,16 +54,28 @@ public class TpaListener {
             .append(Component.text(playerName, NamedTextColor.YELLOW))
             .append(Component.text(" automatically accepted.", NamedTextColor.GREEN)));
       } else {
-        Component message = Component.text("TPA request from ", NamedTextColor.AQUA)
-            .append(Component.text(playerName, NamedTextColor.YELLOW))
-            .append(Component.text(". ", NamedTextColor.AQUA))
-            .append(Component.text("[ACCEPT]", Style.builder()
-                .color(NamedTextColor.GREEN)
-                .decorate(TextDecoration.BOLD)
-                .clickEvent(ClickEvent.runCommand(command))
-                .hoverEvent(HoverEvent.showText(Component.text("Click to accept the TPA from " + playerName)))
-                .build()
-            ));
+        Component message;
+        if (this.addon.configuration().getShowPlayerName().get()) {
+          message = Component.text("TPA request from ", NamedTextColor.AQUA)
+              .append(Component.text(playerName, NamedTextColor.YELLOW))
+              .append(Component.text(". ", NamedTextColor.AQUA))
+              .append(Component.text("[ACCEPT]", Style.builder()
+                  .color(NamedTextColor.GREEN)
+                  .decorate(TextDecoration.BOLD)
+                  .clickEvent(ClickEvent.runCommand(command))
+                  .hoverEvent(HoverEvent.showText(Component.text("Click to accept the TPA from " + playerName)))
+                  .build()
+              ));
+        } else {
+          message = Component.text("A TPA request was detected. ", NamedTextColor.AQUA)
+              .append(Component.text("[ACCEPT]", Style.builder()
+                  .color(NamedTextColor.GREEN)
+                  .decorate(TextDecoration.BOLD)
+                  .clickEvent(ClickEvent.runCommand(command))
+                  .hoverEvent(HoverEvent.showText(Component.text("Click to accept the TPA")))
+                  .build()
+              ));
+        }
         this.addon.displayMessage(message);
       }
     }

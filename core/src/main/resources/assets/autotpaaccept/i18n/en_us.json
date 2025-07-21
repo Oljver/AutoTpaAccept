@@ -5,13 +5,20 @@
         "name": "Enabled"
       },
       "autoAccept": {
-        "name": "Auto-Accept TPA"
+        "name": "Auto-Accept TPA",
+        "description": "If enabled, all TPA requests will be accepted automatically."
       },
       "showOriginalMessage": {
-        "name": "Show Original Message"
+        "name": "Show Original Message",
+        "description": "If enabled, the original TPA request message from the server will be displayed in chat. Disable it to keep your chat cleaner."
+      },
+      "showPlayerName": {
+        "name": "Show Player Name",
+        "description": "Displays the name of the player who sent the TPA request. This should be disabled if you use the 'CustomNameTags' addon to ensure compatibility."
       },
       "playSound": {
         "name": "Play Sound",
+        "description": "Settings for sound notifications on incoming TPA requests.",
         "volume": {
           "name": "Volume"
         },
@@ -25,11 +32,11 @@
             "entityPlayerLevelup": "Level Up",
             "blockNoteBasedrum": "Note Basedrum",
             "blockNoteBass": "Note Bass",
-            "blockNoteBell": "Note Glocke",
-            "blockNoteChime": "Note Windspiel",
-            "blockNoteFlute": "Note Flöte",
-            "blockNoteGuitar": "Note Gitarre",
-            "blockNoteHarp": "Note Harfe",
+            "blockNoteBell": "Note Bell",
+            "blockNoteChime": "Note Chime",
+            "blockNoteFlute": "Note Flute",
+            "blockNoteGuitar": "Note Guitar",
+            "blockNoteHarp": "Note Harp",
             "blockNoteHat": "Note Hi-Hat",
             "blockNotePling": "Note Pling",
             "blockNoteSnare": "Note Snare",
@@ -39,7 +46,7 @@
       },
       "header": {
         "auto-accept-settings": {
-          "name": "Auto TPA Accept Settings"
+          "name": "Auto Accept Settings"
         },
         "message-settings": {
           "name": "Message Settings"

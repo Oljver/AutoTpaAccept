@@ -8,6 +8,7 @@ A simple but effective LabyMod 4 addon designed to streamline the process of acc
 -   **Auto-Accept Mode**: When enabled, the addon instantly accepts any detected TPA request and sends a confirmation message to your chat.
 -   **Manual Confirmation**: If auto-accept is disabled, the addon displays a user-friendly, clickable `[ACCEPT]` button.
 -   **Message Visibility Control**: Choose whether to see the original TPA request message in your chat or to hide it for a cleaner experience.
+-   **Player Name Toggling**: Option to hide the player's name in the custom TPA message for compatibility with other addons like `CustomNameTags`.
 -   **Custom Sound Notifications**: Get notified of a new TPA request with a sound. You can enable/disable the sound, choose from a variety of in-game sounds, and adjust the volume and pitch.
 -   **Fully Configurable**: All features are neatly organized in the LabyMod addon settings.
 
@@ -38,6 +39,9 @@ You can configure the addon directly in your LabyMod settings:
     -   **`Show Original Message`**: Controls the visibility of the original server message for the TPA request.
         -   **ON**: The original message will be displayed in chat.
         -   **OFF**: The original message will be hidden to reduce clutter.
+    - **`Show Player Name`**: Toggles the display of the player's name in the custom TPA message.
+      -   **ON**: The message will be, for example, "TPA request from Steve."
+      -   **OFF**: The message will be generic, e.g., "A TPA request was detected." This should be used for compatibility with addons like `CustomNameTags`.
 
     ### Play Sound Settings
     -   **`Play Sound`**: A master switch for sound notifications.

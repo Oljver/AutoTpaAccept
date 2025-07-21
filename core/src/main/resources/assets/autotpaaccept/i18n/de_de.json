@@ -5,13 +5,20 @@
         "name": "Aktiviert"
       },
       "autoAccept": {
-        "name": "TPA automatisch annehmen"
+        "name": "TPA automatisch annehmen",
+        "description": "Wenn aktiviert, werden alle TPA-Anfragen automatisch angenommen."
       },
       "showOriginalMessage": {
-        "name": "Originale Nachricht anzeigen"
+        "name": "Originale Nachricht anzeigen",
+        "description": "Wenn diese Option aktiviert ist, wird die originale TPA-Nachricht vom Server im Chat angezeigt. Deaktiviere sie, um den Chat sauberer zu halten."
+      },
+      "showPlayerName": {
+        "name": "Spielername anzeigen",
+        "description": "Zeigt den Namen des Spielers an, der die TPA-Anfrage gesendet hat. Sollte deaktiviert werden, wenn du das 'CustomNameTags' Addon verwendest, um die Kompatibilität zu gewährleisten."
       },
       "playSound": {
         "name": "Sound abspielen",
+        "description": "Einstellungen für die Sound-Benachrichtigung bei eingehenden TPA-Anfragen.",
         "volume": {
           "name": "Lautstärke"
         },
