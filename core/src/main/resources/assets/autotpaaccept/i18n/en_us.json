@@ -4,17 +4,21 @@
       "enabled": {
         "name": "Enabled"
       },
-      "autoAccept": {
+      "autoAcceptTpa": {
         "name": "Auto-Accept TPA",
-        "description": "If enabled, all TPA requests will be accepted automatically."
+        "description": "If enabled, all /tpa requests will be accepted automatically."
+      },
+      "autoAcceptTpaHere": {
+        "name": "Auto-Accept TPA-Here",
+        "description": "If enabled, all /tpahere requests will be accepted automatically."
       },
       "showOriginalMessage": {
         "name": "Show Original Message",
-        "description": "If enabled, the original TPA request message from the server will be displayed in chat. Disable it to keep your chat cleaner."
+        "description": "If enabled, the original TPA request message from the server will be displayed in chat."
       },
       "showPlayerName": {
         "name": "Show Player Name",
-        "description": "Displays the name of the player who sent the TPA request. This should be disabled if you use the 'CustomNameTags' addon to ensure compatibility."
+        "description": "Displays the player's name in the custom clickable message when auto-accept is disabled. This should be turned off for compatibility with other addons (e.g. CustomNameTags)."
       },
       "playSound": {
         "name": "Play Sound",
@@ -29,18 +33,7 @@
           "name": "Sound",
           "entries": {
             "entityExperienceOrbPickup": "Experience Orb",
-            "entityPlayerLevelup": "Level Up",
-            "blockNoteBasedrum": "Note Basedrum",
-            "blockNoteBass": "Note Bass",
-            "blockNoteBell": "Note Bell",
-            "blockNoteChime": "Note Chime",
-            "blockNoteFlute": "Note Flute",
-            "blockNoteGuitar": "Note Guitar",
-            "blockNoteHarp": "Note Harp",
-            "blockNoteHat": "Note Hi-Hat",
-            "blockNotePling": "Note Pling",
-            "blockNoteSnare": "Note Snare",
-            "blockNoteXylophone": "Note Xylophon"
+            "entityPlayerLevelup": "Level Up"
           }
         }
       },

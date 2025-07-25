@@ -14,7 +14,10 @@ public class AutoTpaAcceptConfig extends AddonConfig {
 
   @SettingSection("auto-accept-settings")
   @SwitchSetting
-  private final ConfigProperty<Boolean> autoAccept = new ConfigProperty<>(false);
+  private final ConfigProperty<Boolean> autoAcceptTpa = new ConfigProperty<>(false);
+
+  @SwitchSetting
+  private final ConfigProperty<Boolean> autoAcceptTpaHere = new ConfigProperty<>(false);
 
   @SettingSection("message-settings")
   @SwitchSetting
@@ -31,8 +34,12 @@ public class AutoTpaAcceptConfig extends AddonConfig {
     return enabled;
   }
 
-  public ConfigProperty<Boolean> getAutoAccept() {
-    return autoAccept;
+  public ConfigProperty<Boolean> getAutoAcceptTpa() {
+    return autoAcceptTpa;
+  }
+
+  public ConfigProperty<Boolean> getAutoAcceptTpaHere() {
+    return autoAcceptTpaHere;
   }
 
   public ConfigProperty<Boolean> getShowOriginalMessage() {

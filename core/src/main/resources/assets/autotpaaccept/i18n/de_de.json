@@ -4,17 +4,21 @@
       "enabled": {
         "name": "Aktiviert"
       },
-      "autoAccept": {
+      "autoAcceptTpa": {
         "name": "TPA automatisch annehmen",
-        "description": "Wenn aktiviert, werden alle TPA-Anfragen automatisch angenommen."
+        "description": "Wenn aktiviert, werden alle /tpa-Anfragen automatisch angenommen."
+      },
+      "autoAcceptTpaHere": {
+        "name": "TPA-Here automatisch annehmen",
+        "description": "Wenn aktiviert, werden alle /tpahere-Anfragen automatisch angenommen."
       },
       "showOriginalMessage": {
         "name": "Originale Nachricht anzeigen",
-        "description": "Wenn diese Option aktiviert ist, wird die originale TPA-Nachricht vom Server im Chat angezeigt. Deaktiviere sie, um den Chat sauberer zu halten."
+        "description": "Wenn diese Option aktiviert ist, wird die originale TPA-Nachricht vom Server im Chat angezeigt."
       },
       "showPlayerName": {
         "name": "Spielername anzeigen",
-        "description": "Zeigt den Namen des Spielers an, der die TPA-Anfrage gesendet hat. Sollte deaktiviert werden, wenn du das 'CustomNameTags' Addon verwendest, um die Kompatibilität zu gewährleisten."
+        "description": "Zeigt den Spielernamen in der klickbaren Nachricht an, wenn die Auto-Annehmen Funktion deaktiviert ist. Sollte bei Problemen mit anderen Addons (z.B. CustomNameTags) deaktiviert werden."
       },
       "playSound": {
         "name": "Sound abspielen",
@@ -29,18 +33,7 @@
           "name": "Ton",
           "entries": {
             "entityExperienceOrbPickup": "Erfahrungskugel",
-            "entityPlayerLevelup": "Level Aufstieg",
-            "blockNoteBasedrum": "Note Basedrum",
-            "blockNoteBass": "Note Bass",
-            "blockNoteBell": "Note Glocke",
-            "blockNoteChime": "Note Windspiel",
-            "blockNoteFlute": "Note Flöte",
-            "blockNoteGuitar": "Note Gitarre",
-            "blockNoteHarp": "Note Harfe",
-            "blockNoteHat": "Note Hi-Hat",
-            "blockNotePling": "Note Pling",
-            "blockNoteSnare": "Note Snare",
-            "blockNoteXylophone": "Note Xylophon"
+            "entityPlayerLevelup": "Level Aufstieg"
           }
         }
       },

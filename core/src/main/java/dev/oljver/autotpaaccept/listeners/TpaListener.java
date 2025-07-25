@@ -17,6 +17,7 @@ public class TpaListener {
 
   private final AutoTpaAccept addon;
   private final Pattern tpaPattern = Pattern.compile("/tpa accept (\\w{3,16})");
+  private final Pattern tpaHerePattern = Pattern.compile("/tpahere accept (\\w{3,16})");
 
   public TpaListener(AutoTpaAccept addon) {
     this.addon = addon;
@@ -29,55 +30,63 @@ public class TpaListener {
     }
 
     String plainText = event.chatMessage().getPlainText();
-    Matcher matcher = tpaPattern.matcher(plainText);
 
-    if (matcher.find()) {
-      String playerName = matcher.group(1);
-      String command = matcher.group(0);
+    Matcher tpaMatcher = tpaPattern.matcher(plainText);
+    Matcher tpaHereMatcher = tpaHerePattern.matcher(plainText);
 
-      if (!this.addon.configuration().getShowOriginalMessage().get()) {
-        event.setCancelled(true);
-      }
+    if (tpaMatcher.find()) {
+      handleTpa(event, tpaMatcher, "TPA", this.addon.configuration().getAutoAcceptTpa().get());
+    } else if (tpaHereMatcher.find()) {
+      handleTpa(event, tpaHereMatcher, "TPA-Here", this.addon.configuration().getAutoAcceptTpaHere().get());
+    }
+  }
 
-      if (this.addon.configuration().getPlaySound().enabled().get()) {
-        float volume = this.addon.configuration().getPlaySound().getVolume().get();
-        float pitch = this.addon.configuration().getPlaySound().getPitch().get();
-        String soundName = this.addon.configuration().getPlaySound().getSound().get().getSoundName();
+  private void handleTpa(ChatReceiveEvent event, Matcher matcher, String type, boolean shouldAutoAccept) {
+    String playerName = matcher.group(1);
+    String command = matcher.group(0);
 
-        ResourceLocation soundResource = ResourceLocation.create("minecraft", soundName);
-        this.addon.labyAPI().minecraft().sounds().playSound(soundResource, volume, pitch);
-      }
+    if (!this.addon.configuration().getShowOriginalMessage().get()) {
+      event.setCancelled(true);
+    }
 
-      if (this.addon.configuration().getAutoAccept().get()) {
-        this.addon.labyAPI().minecraft().chatExecutor().chat(command, false);
-        this.addon.displayMessage(Component.text("TPA from ", NamedTextColor.GREEN)
+    if (this.addon.configuration().getPlaySound().enabled().get()) {
+      float volume = this.addon.configuration().getPlaySound().getVolume().get();
+      float pitch = this.addon.configuration().getPlaySound().getPitch().get();
+      String soundName = this.addon.configuration().getPlaySound().getSound().get().getSoundName();
+
+      ResourceLocation soundResource = ResourceLocation.create("minecraft", soundName);
+      this.addon.labyAPI().minecraft().sounds().playSound(soundResource, volume, pitch);
+    }
+
+    if (shouldAutoAccept) {
+      this.addon.labyAPI().minecraft().chatExecutor().chat(command, false);
+      this.addon.displayMessage(Component.text(type + " from ", NamedTextColor.GREEN)
+          .append(Component.text(playerName, NamedTextColor.YELLOW))
+          .append(Component.text(" automatically accepted.", NamedTextColor.GREEN)));
+    } else {
+      Component message;
+      if (this.addon.configuration().getShowPlayerName().get()) {
+        message = Component.text(type + " request from ", NamedTextColor.AQUA)
             .append(Component.text(playerName, NamedTextColor.YELLOW))
-            .append(Component.text(" automatically accepted.", NamedTextColor.GREEN)));
+            .append(Component.text(". ", NamedTextColor.AQUA))
+            .append(Component.text("[ACCEPT]", Style.builder()
+                .color(NamedTextColor.GREEN)
+                .decorate(TextDecoration.BOLD)
+                .clickEvent(ClickEvent.runCommand(command))
+                .hoverEvent(HoverEvent.showText(Component.text("Click to accept the " + type + " from " + playerName)))
+                .build()
+            ));
       } else {
-        Component message;
-        if (this.addon.configuration().getShowPlayerName().get()) {
-          message = Component.text("TPA request from ", NamedTextColor.AQUA)
-              .append(Component.text(playerName, NamedTextColor.YELLOW))
-              .append(Component.text(". ", NamedTextColor.AQUA))
-              .append(Component.text("[ACCEPT]", Style.builder()
-                  .color(NamedTextColor.GREEN)
-                  .decorate(TextDecoration.BOLD)
-                  .clickEvent(ClickEvent.runCommand(command))
-                  .hoverEvent(HoverEvent.showText(Component.text("Click to accept the TPA from " + playerName)))
-                  .build()
-              ));
-        } else {
-          message = Component.text("A TPA request was detected. ", NamedTextColor.AQUA)
-              .append(Component.text("[ACCEPT]", Style.builder()
-                  .color(NamedTextColor.GREEN)
-                  .decorate(TextDecoration.BOLD)
-                  .clickEvent(ClickEvent.runCommand(command))
-                  .hoverEvent(HoverEvent.showText(Component.text("Click to accept the TPA")))
-                  .build()
-              ));
-        }
-        this.addon.displayMessage(message);
+        message = Component.text("A " + type + " request was detected. ", NamedTextColor.AQUA)
+            .append(Component.text("[ACCEPT]", Style.builder()
+                .color(NamedTextColor.GREEN)
+                .decorate(TextDecoration.BOLD)
+                .clickEvent(ClickEvent.runCommand(command))
+                .hoverEvent(HoverEvent.showText(Component.text("Click to accept the " + type)))
+                .build()
+            ));
       }
+      this.addon.displayMessage(message);
     }
   }
 }
